@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'ShopXpert',
       theme: ThemeData(
         primarySwatch: Colors.orange,
+        scaffoldBackgroundColor: Colors.white,
         textTheme: textThemes,
       ),
       onGenerateRoute: (settings) => Routes().route(settings),

@@ -25,47 +25,43 @@ class CategoryPage extends StatelessWidget {
         centerTitle: true,
         elevation: 0,
       ),
-      body: Container(
-        color: Colors.white,
-        child: SafeArea(
-          child: BlocBuilder<CategoryBloc, CategoryState>(
-            builder: (context, state) {
-              if (state is CategoryLoading) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-              if (state is CategoryLoaded) {
-                return SingleChildScrollView(
-                  padding: const EdgeInsets.all(
-                    16,
+      body: SafeArea(
+        child: BlocBuilder<CategoryBloc, CategoryState>(
+          builder: (context, state) {
+            if (state is CategoryLoading) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            if (state is CategoryLoaded) {
+              return SingleChildScrollView(
+                padding: const EdgeInsets.all(
+                  16,
+                ),
+                child: GridView.builder(
+                  itemCount: state.products.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
                   ),
-                  child: GridView.builder(
-                    itemCount: state.products.length,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 10,
-                    ),
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      return CardProduct(
-                        product: state.products[index],
-                      );
-                    },
-                  ),
-                );
-              }
-              if (state is CategoryError) {
-                return Center(
-                  child: Text(state.message),
-                );
-              }
-              return const SizedBox();
-            },
-          ),
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    return CardProduct(
+                      product: state.products[index],
+                    );
+                  },
+                ),
+              );
+            }
+            if (state is CategoryError) {
+              return Center(
+                child: Text(state.message),
+              );
+            }
+            return const SizedBox();
+          },
         ),
       ),
     );

@@ -30,41 +30,38 @@ class HomePage extends StatelessWidget {
             );
           }
           if (state is HomeLoaded) {
-            return Container(
-              color: Colors.white,
-              child: SingleChildScrollView(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 100,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: List.generate(
-                          state.categories.length,
-                          (index) => CategoryItem(
-                            category: state.categories[index],
-                          ),
+            return SingleChildScrollView(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 100,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: List.generate(
+                        state.categories.length,
+                        (index) => CategoryItem(
+                          category: state.categories[index],
                         ),
                       ),
                     ),
-                    GridView.builder(
-                        itemCount: state.products.length,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          crossAxisSpacing: 10,
-                          mainAxisSpacing: 10,
-                        ),
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) {
-                          return CardProduct(
-                            product: state.products[index],
-                          );
-                        }),
-                  ],
-                ),
+                  ),
+                  GridView.builder(
+                      itemCount: state.products.length,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 10,
+                        mainAxisSpacing: 10,
+                      ),
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        return CardProduct(
+                          product: state.products[index],
+                        );
+                      }),
+                ],
               ),
             );
           }
