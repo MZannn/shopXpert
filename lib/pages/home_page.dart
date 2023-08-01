@@ -15,6 +15,11 @@ class HomePage extends StatelessWidget {
           onPressed: () {},
           icon: const Icon(Icons.menu),
         ),
+        title: Image.asset(
+          "assets/images/logo.png",
+          height: 50,
+        ),
+        centerTitle: true,
         elevation: 0,
       ),
       body: BlocBuilder<HomeBloc, HomeState>(
