@@ -4,7 +4,9 @@ import 'package:shopxpert/widgets/card_product.dart';
 import 'package:shopxpert/widgets/category_item.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  const HomePage({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

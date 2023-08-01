@@ -28,7 +28,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
             ),
           );
         }
-      } catch (e) {}
+      } catch (e) {
+        emit(
+          HomeError(e.toString()),
+        );
+      }
     });
   }
 }
