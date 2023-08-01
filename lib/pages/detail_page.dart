@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:shopxpert/blocs/detail/detail_bloc.dart';
-import 'package:shopxpert/widgets/rating_starts.dart';
 
 class DetailPage extends StatelessWidget {
   const DetailPage({super.key});
@@ -27,10 +26,9 @@ class DetailPage extends StatelessWidget {
                       Stack(
                         children: [
                           Container(
-                            margin: const EdgeInsets.only(
-                              top: 20,
-                            ),
+                            margin: const EdgeInsets.all(24),
                             height: 300,
+                            padding: const EdgeInsets.all(24),
                             width: double.infinity,
                             decoration: BoxDecoration(
                               image: DecorationImage(
